@@ -16,10 +16,10 @@ class App extends React.Component {
         handleRadioChange = (event) => {
           const vat = Number(event.target.value)
           if (this.state.userInputInkVat) {
-          this.setState({
-            vatRate: vat,
-            exVat: incVatToExtVat(vat, this.state.incVat)
-          })
+            this.setState({
+              vatRate: vat,
+              exVat: incVatToExtVat(vat, this.state.incVat)
+            })
           } else {
             this.setState({
               vatRate: vat,
@@ -82,31 +82,36 @@ class App extends React.Component {
                   <label htmlFor="vat6">6%</label>
                 </div>
 
-                <p>Current state: {this.state.vatRate}</p>
+                <div>
+                  <label htmlFor="ink">Inklusive moms (kr)</label>
+                  <input
+                    id="ink"
+                    type="number"
+                    name="incVatField"
+                    value={this.state.incVat}
+                    onChange={this.handleIncVatChange} />
+                </div>
 
-                <label htmlFor="ink">Inklusive moms (kr)</label>
-                <input
-                  id="ink"
-                  type="number"
-                  name="incVatField"
-                  value={this.state.incVat}
-                  onChange={this.handleIncVatChange} />
+                <div>
+                  <label htmlFor="exk">Exklusive moms (kr)</label>
+                  <input
+                    id="exk"
+                    type="number"
+                    name="exVatField"
+                    value={this.state.exVat}
+                    onChange={this.handleExVatChange} />
+                </div>
 
-                <label htmlFor="exk">Exklusive moms (kr)</label>
-                <input
-                  id="exk"
-                  type="number"
-                  name="exVatField"
-                  value={this.state.exVat}
-                  onChange={this.handleExVatChange} />
+                <div>
+                  <label htmlFor="moms">Momssumma (kr)</label>
+                  <input
+                    id="moms"
+                    type="number"
+                    name="totalVatField"
+                    value={(this.state.incVat - this.state.exVat).toFixed(2)}
+                    readOnly="readOnly" />
+                </div>
 
-                <label htmlFor="moms">Momssumma (kr)</label>
-                <input
-                  id="moms"
-                  type="number"
-                  name="totalVatField"
-                  value={(this.state.incVat - this.state.exVat).toFixed(2)}
-                  readOnly="readOnly" />
               </form>
             </div>
           )
