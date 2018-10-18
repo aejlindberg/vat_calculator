@@ -1,5 +1,40 @@
 body {
+  background-color: #FDFFFC;
+  color: #FFB30F;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+div {
+  margin: 20px;
+}
+
+form {
+  margin: 20px;
+  width: 400px;
+}
+
+h1 {
+  font-family: "Raleway dots", cursive;
+  text-align: center;
+}
+
+.wrapper {
+  border: #FFB30F dotted 4px;
+  width: 450px;
+  display: flex;
+  justify-content: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.radio {
+  display: flex;
+  justify-content: flex-start;
 }

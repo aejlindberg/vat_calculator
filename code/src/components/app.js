@@ -49,70 +49,71 @@ class App extends React.Component {
         render() {
           return (
             <div className="App">
+              <h1>VAT Calculator</h1>
+              <div className="wrapper">
+                <form>
 
-              <form>
+                  <div className="radio">
+                    <input
+                      id="vat25"
+                      type="radio"
+                      value="25"
+                      checked={this.state.vatRate === 25}
+                      onChange={this.handleRadioChange} />
+                    <label htmlFor="vat25">25%</label>
+                  </div>
 
-                <div>
-                  <input
-                    id="vat25"
-                    type="radio"
-                    value="25"
-                    checked={this.state.vatRate === 25}
-                    onChange={this.handleRadioChange} />
-                  <label htmlFor="vat25">25%</label>
-                </div>
+                  <div className="radio">
+                    <input
+                      id="vat12"
+                      type="radio"
+                      value="12"
+                      checked={this.state.vatRate === 12}
+                      onChange={this.handleRadioChange} />
+                    <label htmlFor="vat12">12%</label>
+                  </div>
 
-                <div>
-                  <input
-                    id="vat12"
-                    type="radio"
-                    value="12"
-                    checked={this.state.vatRate === 12}
-                    onChange={this.handleRadioChange} />
-                  <label htmlFor="vat12">12%</label>
-                </div>
+                  <div className="radio">
+                    <input
+                      id="vat6"
+                      type="radio"
+                      value="6"
+                      checked={this.state.vatRate === 6}
+                      onChange={this.handleRadioChange} />
+                    <label htmlFor="vat6">6%</label>
+                  </div>
 
-                <div>
-                  <input
-                    id="vat6"
-                    type="radio"
-                    value="6"
-                    checked={this.state.vatRate === 6}
-                    onChange={this.handleRadioChange} />
-                  <label htmlFor="vat6">6%</label>
-                </div>
+                  <div className="field">
+                    <label htmlFor="ink">Including VAT</label>
+                    <input
+                      id="ink"
+                      type="number"
+                      name="incVatField"
+                      value={this.state.incVat}
+                      onChange={this.handleIncVatChange} />
+                  </div>
 
-                <div>
-                  <label htmlFor="ink">Inklusive moms (kr)</label>
-                  <input
-                    id="ink"
-                    type="number"
-                    name="incVatField"
-                    value={this.state.incVat}
-                    onChange={this.handleIncVatChange} />
-                </div>
+                  <div className="field">
+                    <label htmlFor="exk">Excluding VAT</label>
+                    <input
+                      id="exk"
+                      type="number"
+                      name="exVatField"
+                      value={this.state.exVat}
+                      onChange={this.handleExVatChange} />
+                  </div>
 
-                <div>
-                  <label htmlFor="exk">Exklusive moms (kr)</label>
-                  <input
-                    id="exk"
-                    type="number"
-                    name="exVatField"
-                    value={this.state.exVat}
-                    onChange={this.handleExVatChange} />
-                </div>
-
-                <div>
-                  <label htmlFor="moms">Momssumma (kr)</label>
-                  <input
-                    id="moms"
-                    type="number"
-                    name="totalVatField"
-                    value={(this.state.incVat - this.state.exVat).toFixed(2)}
-                    readOnly="readOnly" />
-                </div>
-
-              </form>
+                  <div className="field">
+                    <label htmlFor="moms">Total amount VAT</label>
+                    <input
+                      id="moms"
+                      type="number"
+                      name="totalVatField"
+                      value={(this.state.incVat - this.state.exVat).toFixed(2)}
+                      readOnly="readOnly" />
+                  </div>
+                </form>
+              </div>
             </div>
           )
         }
